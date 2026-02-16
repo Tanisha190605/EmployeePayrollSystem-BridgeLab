@@ -1,0 +1,2 @@
+const fs=require("fs").promises; //fs is for file system kyunki humein file read write krni h, .promises ki help se hum async/await use kr skte h nhi to callback ka use krna pdta
+const path=require("path");

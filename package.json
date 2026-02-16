@@ -1,0 +1,24 @@
+{
+  "name": "employeepayrollsystem-bridgelab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tanisha190605/EmployeePayrollSystem-BridgeLab.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tanisha190605/EmployeePayrollSystem-BridgeLab/issues"
+  },
+  "homepage": "https://github.com/Tanisha190605/EmployeePayrollSystem-BridgeLab#readme",
+  "dependencies": {
+    "ejs": "^4.0.1",
+    "express": "^5.2.1"
+  }
+}
