@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Employee</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Add Employee</h1>
+
+    <form action="/add" method="POST" enctype="multipart/form-data" class="form-box">
+
+        <input type="text" name="name" placeholder="Enter Name" required>
+
+        <select name="gender" required>
+            <option value="">Select Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+        </select>
+
+        <input type="text" name="department" placeholder="Enter Department" required>
+
+        <input type="number" name="salary" placeholder="Enter Salary" required>
+
+        <input type="date" name="startDate" required>
+
+        <input type="file" name="profilePic" accept="image/*">
+
+        <button type="submit" class="add-btn">Save</button>
+
+    </form>
+
+    <br>
+    <a href="/">← Back</a>
+</div>
+
+</body>
+</html>
