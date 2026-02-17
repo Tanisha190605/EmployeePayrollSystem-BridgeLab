@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Employee</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Edit Employee</h2>
+
+    <form action="/update/<%= employee.id %>" method="POST" class="form-box">
+
+        <input type="text" name="name"
+               value="<%= employee.name %>" required>
+
+        <select name="gender" required>
+            <option <%= employee.gender === "Male" ? "selected" : "" %>>Male</option>
+            <option <%= employee.gender === "Female" ? "selected" : "" %>>Female</option>
+            <option <%= employee.gender === "Other" ? "selected" : "" %>>Other</option>
+        </select>
+
+        <input type="text" name="department"
+               value="<%= employee.department %>" required>
+
+        <input type="number" name="salary"
+               value="<%= employee.salary %>" required>
+
+        <input type="date" name="startDate"
+               value="<%= employee.startDate %>" required>
+
+        <button type="submit" class="add-btn">Update</button>
+
+    </form>
+
+    <br>
+    <a href="/">← Back</a>
+</div>
+
+</body>
+</html>
