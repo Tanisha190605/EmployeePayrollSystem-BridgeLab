@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Details</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+    <div class="top-bar">
+        <h2>Employee Details</h2>
+
+        <div class="actions">
+            <input type="text" placeholder="Search..." class="search-box">
+            <button class="add-btn" onclick="openModal()">Add User</button>
+
+        </div>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="cards">
+        <div class="card">
+            <p>Total Employees</p>
+            <h3><%= employees.length %></h3>
+        </div>
+
+        <div class="card">
+            <p>Total Departments</p>
+            <h3>
+                <%= [...new Set(employees.map(e => e.department))].length %>
+            </h3>
+        </div>
+
+        <div class="card">
+            <p>Total Basic Salary</p>
+            <h3>
+                ₹ <%= employees.reduce((sum,e)=>sum+e.salary,0) %>
+            </h3>
+        </div>
+
+        <div class="card">
+            <p>Total Tax (12%)</p>
+            <h3>
+                ₹ <%= (employees.reduce((sum,e)=>sum+e.salary,0) * 0.12).toFixed(2) %>
+            </h3>
+        </div>
+
+        <div class="card">
+            <p>Total Net Salary</p>
+            <h3>
+                ₹ <%= (employees.reduce((sum,e)=>sum+e.salary,0) * 0.88).toFixed(2) %>
+            </h3>
+        </div>
+        
+        <div class="card">
+            <p>Average Salary</p>
+            <h3>
+                ₹ <%= employees.length? ((employees.reduce((sum,e)=>sum+e.salary,0) * 0.88) / employees.length).toFixed(2): 0 %>
+
+            </h3>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th>Tax</th>
+            <th>Net Salary</th>
+            <th>Actions</th>
+
+        </tr>
+
+        <% employees.forEach(emp => { 
+            const tax = emp.salary * 0.12;
+            const net = emp.salary - tax;
+        %>
+
+        <tr>
+    <td><%= emp.name %></td>
+    <td><%= emp.department %></td>
+    <td>₹ <%= emp.salary %></td>
+    <td>₹ <%= tax.toFixed(2) %></td>
+    <td>₹ <%= net.toFixed(2) %></td>
+    <td>
+        <a href="/edit/<%= emp.id %>" class="edit-btn">✏</a>
+        <a href="/delete/<%= emp.id %>" class="delete-btn" onclick="return confirm('Delete this employee?')">🗑</a>
+    </td>
+</tr>
+<% }) %>
+    </table>
+
+</div>
+<!-- Add Employee Modal -->
+<div id="addModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <h2>Add Employee</h2>
+
+    <form action="/add" method="POST">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="text" name="department" placeholder="Department" required>
+        <input type="number" name="salary" placeholder="Salary" required>
+        <button type="submit" class="add-btn">Save</button>
+    </form>
+  </div>
+</div>
+<script>
+function openModal(){
+    document.getElementById("addModal").style.display = "flex";
+}
+
+function closeModal(){
+    document.getElementById("addModal").style.display = "none";
+}
+</script>
+
+</body>
+</html>
